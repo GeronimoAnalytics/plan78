@@ -241,10 +241,6 @@
     img.style.cssText = 'width:100%;height:100%;object-fit:contain';
     img.onerror = function() { img.src = images[currentIndex].thumb; };
     
-    const infoDiv = document.createElement('div');
-    infoDiv.style.cssText = 'position:absolute;bottom:10px;left:10px;color:#999;font-size:14px;pointer-events:none;z-index:1';
-    infoDiv.innerHTML = (currentIndex + 1) + ' / ' + images.length;
-    
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '\u00d7';
     closeBtn.style.cssText = 'position:absolute;top:10px;right:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;padding:0;width:40px;height:40px;opacity:0.7;z-index:3';
@@ -257,20 +253,19 @@
     prevBtn.style.cssText = 'position:absolute;left:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:40px;cursor:pointer;padding:0;opacity:0.5';
     prevBtn.onmouseover = () => prevBtn.style.opacity = '1';
     prevBtn.onmouseout = () => prevBtn.style.opacity = '0.5';
-    prevBtn.onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + images.length) % images.length; img.src = images[currentIndex].full || images[currentIndex].thumb; img.onerror = function() { img.src = images[currentIndex].thumb; }; infoDiv.innerHTML = (currentIndex + 1) + ' / ' + images.length; };
+    prevBtn.onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + images.length) % images.length; img.src = images[currentIndex].full || images[currentIndex].thumb; img.onerror = function() { img.src = images[currentIndex].thumb; }; };
     
     const nextBtn = document.createElement('button');
     nextBtn.innerHTML = '\u276f';
     nextBtn.style.cssText = 'position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:40px;cursor:pointer;padding:0;opacity:0.5';
     nextBtn.onmouseover = () => nextBtn.style.opacity = '1';
     nextBtn.onmouseout = () => nextBtn.style.opacity = '0.5';
-    nextBtn.onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % images.length; img.src = images[currentIndex].full || images[currentIndex].thumb; img.onerror = function() { img.src = images[currentIndex].thumb; }; infoDiv.innerHTML = (currentIndex + 1) + ' / ' + images.length; };
+    nextBtn.onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % images.length; img.src = images[currentIndex].full || images[currentIndex].thumb; img.onerror = function() { img.src = images[currentIndex].thumb; }; };
     
     container.appendChild(img);
     container.appendChild(closeBtn);
     container.appendChild(prevBtn);
     container.appendChild(nextBtn);
-    container.appendChild(infoDiv);
     overlay.appendChild(container);
     document.body.appendChild(overlay);
     
