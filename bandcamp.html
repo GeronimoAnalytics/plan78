@@ -320,12 +320,12 @@
     img.onerror = function() { img.src = images[currentIndex].thumb; };
     
     const infoDiv = document.createElement('div');
-    infoDiv.style.cssText = 'position:absolute;bottom:10px;left:10px;color:#999;font-size:14px';
+    infoDiv.style.cssText = 'position:absolute;bottom:10px;left:10px;color:#999;font-size:14px;pointer-events:none;z-index:1';
     infoDiv.innerHTML = (currentIndex + 1) + ' / ' + images.length;
     
     const closeBtn = document.createElement('button');
     closeBtn.innerHTML = '\u00d7';
-    closeBtn.style.cssText = 'position:absolute;top:10px;right:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;padding:0;width:40px;height:40px;opacity:0.7';
+    closeBtn.style.cssText = 'position:absolute;top:10px;right:10px;background:none;border:none;color:#fff;font-size:40px;cursor:pointer;padding:0;width:40px;height:40px;opacity:0.7;z-index:3';
     closeBtn.onmouseover = () => closeBtn.style.opacity = '1';
     closeBtn.onmouseout = () => closeBtn.style.opacity = '0.7';
     closeBtn.onclick = (e) => { e.stopPropagation(); overlay.remove(); };
